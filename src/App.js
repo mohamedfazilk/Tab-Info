@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from "react";
+
+const url = 'https://course-api.com/react-tabs-project'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const[loading, setLoading] = useState(true)
+  const [myInfo, setMyInfo] = useState([])
+  const [value, setValue] = useState(0)
+
+  const fetchInfo = async ()=>{
+    const response = await fetch(url);
+    const myInfo = await response.json();
+    setMyInfo(myInfo);
+    console.log(myInfo);
+
+  }
+
+  useEffect(()=>{
+    fetchInfo();
+    setLoading(false)
+  },[])
+
+  if(loading){
+    return <section className='section loading'>
+      <h1>Loading...</h1></section>
+  }
+
+
+  return <h2>my</h2>
 }
 
 export default App;
