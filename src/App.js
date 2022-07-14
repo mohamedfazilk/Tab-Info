@@ -11,13 +11,14 @@ function App() {
     const response = await fetch(url);
     const myInfo = await response.json();
     setMyInfo(myInfo);
+    setLoading(false)
     console.log(myInfo);
 
   }
 
   useEffect(()=>{
     fetchInfo();
-    setLoading(false)
+   
   },[])
 
   if(loading){
