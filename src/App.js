@@ -43,7 +43,8 @@ const {title,dates,duties,company} = myInfo[value]
       <div className="btn-container">
         {myInfo.map((jobs,index)=>{
           return (
-            <button key={jobs.id} onClick={()=>setValue(index)}>
+            <button key={jobs.id} className={`job-btn ${index === value && 'active-btn'}`}
+            onClick={()=>setValue(index)}>
               {jobs.company}
             </button>
           )
